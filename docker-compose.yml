@@ -1,0 +1,9 @@
+version: "3"
+services:
+  detectron2-instance-segmentation:
+    # if something fails or the server is restarted, the container will restart
+    restart: always 
+    container_name: detectron2
+    image: detectron2
+    build: 
+      context: . 
