@@ -1,11 +1,11 @@
-# detectron2-dfki
-This repo is for evaluation purpose, build for instance segmentation task on EVICAN2 Dataset
+# Detectron2-dfki
+This repo is for evaluation purpose, build for **instance-segmentation** task on **EVICAN2** Dataset
 
 
 
 ##  Dependency Installation
 
-Clone Detectron2
+**Clone Detectron2**
 
 git clone https://github.com/facebookresearch/detectron2.git
 
@@ -25,7 +25,7 @@ pip install pycocotools==2.0.4
 
 ##  Dataset URL
 
-Download the EVICAN2 dataset and place it in the project
+**Download the EVICAN2 dataset and place it in the project**
 
 https://edmond.mpdl.mpg.de/dataset.xhtml?persistentId=doi:10.17617/3.AJBV1S
 
@@ -33,48 +33,45 @@ https://edmond.mpdl.mpg.de/dataset.xhtml?persistentId=doi:10.17617/3.AJBV1S
 
 ##  Training Detectron2 Instance Segmentation Model Locally using .py
 
-To train run: 
+**To train run:** 
 python main_train.py
 
-To Evaluate run:
+**To Evaluate run:**
 python main_eval.py
 
 
 ##  Training Detectron2 Instance Segmentation Model Locally using NoteBook
 
-Run the Notebook below to run the train/eval locally 
+**Run the Notebook below to run the train/eval locally**
 Main_Detectron2.ipynb
 
 
 ##  Training Detectron2 Instance Segmentation Model Locally using Google Colab
 
-Run the Notebook below to run the train/eval locally 
+**Run the Notebook below to run the train/eval locally**
 Colab/Main_Detectron2.ipynb
 
 
 
 ##  DOCKER
 
-Due to time and hardware constraints, I could not complete the docker container building part.
-(Working on it)
-
-Clone Detectron2
+**Clone Detectron2**
 
 git clone https://github.com/facebookresearch/detectron2.git
 
-To Build Docker:
+**To Build Docker:**
 
-Build Docker Image: docker compose build
+**Build Docker Image:** docker compose build
 
-Run Docker Image: docker run --gpus all -it detectron2
+**Run Docker Image:** docker run --gpus all -it detectron2
 
-To run already built Docker:
+**To run already built Docker:**
 
-Download Docker image from this link: https://bit.ly/3dYfOU5
+**Download Docker image from this link:** https://bit.ly/3dYfOU5
 
-Load Docker Image: docker load --input detectron2_docker.tar
+**Load Docker Image:** docker load --input detectron2_docker.tar
 
-Run Docker Image: docker run --gpus all -it detectron2
+**Run Docker Image:** docker run --gpus all -it detectron2
 
 
 
