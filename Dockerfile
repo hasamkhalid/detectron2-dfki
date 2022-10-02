@@ -1,9 +1,8 @@
-FROM python:3.8
-
-ADD file:4974bb5483c392fb54a35f3799802d623d14632747493dce5feb4d435634b4ac in / 
+FROM python:3.7.1
+RUN pip install pyyaml==5.3.1
+RUN pip install -U torch==1.7.1+cu101 torchvision==0.8.2+cu101 torchaudio==0.7.2 -f https://download.pytorch.org/whl/cu101/torch_stable.html
+RUN pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu101/torch1.7/index.html
 ADD requirements.txt /
-RUN apt-get update && apt-get install -y python3-opencv
-RUN pip install opencv-python
 RUN pip install -r /requirements.txt
 ADD main_eval.py /
 ADD LossEvalHook.py /
