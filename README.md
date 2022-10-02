@@ -5,6 +5,10 @@ This repo is for evaluation purpose, build for instance segmentation task on EVI
 
 ##  Dependency Installation
 
+Clone Detectron2
+
+git clone https://github.com/facebookresearch/detectron2.git
+
 pip install opencv-python
 
 pip install pyyaml==5.3.1
@@ -53,6 +57,24 @@ Colab/Main_Detectron2.ipynb
 
 Due to time and hardware constraints, I could not complete the docker container building part.
 (Working on it)
+
+Clone Detectron2
+
+git clone https://github.com/facebookresearch/detectron2.git
+
+To Build Docker:
+
+Build Docker Image: docker compose build
+
+Run Docker Image: docker run --gpus all -it detectron2
+
+To run already built Docker:
+
+Download Docker image from this link: https://bit.ly/3dYfOU5
+
+Load Docker Image: docker load --input detectron2_docker.tar
+
+Run Docker Image: docker run --gpus all -it detectron2
 
 
 
