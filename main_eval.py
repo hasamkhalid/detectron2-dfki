@@ -7,11 +7,11 @@ from detectron2.engine import DefaultPredictor
 import torch
 from detectron2.utils.visualizer import ColorMode
 from detectron2.utils.visualizer import Visualizer
-from google.colab.patches import cv2_imshow
 from detectron2.utils.visualizer import ColorMode
 from detectron2.utils.visualizer import Visualizer
 import cv2
 from detectron2.evaluation import COCOEvaluator, inference_on_dataset
+from detectron2.data import DatasetMapper, build_detection_test_loader
 
 
 print(torch.__version__, torch.cuda.is_available())
@@ -22,7 +22,6 @@ annotations_dir = 'annotations_EVICAN2/'
 register_coco_instances("my_dataset_eval", {}, root_dir+annotations_dir+"instances_eval2019_medium_EVICAN2_bbox.json", root_dir+'Images/EVICAN_eval2019')
 
 
-cfg.MODEL.WEIGHTS = 'output/model_best.pth'
 #@title Loading model for Evaluation on Eval/Test Dataset 
 
 cfg = get_cfg()
@@ -47,27 +46,27 @@ predictor = DefaultPredictor(cfg)
 
 #@title do detection and display result
 
-os.makedirs('out_images/', exist_ok=True)
-evalImages = 'dataverse_files/Images/EVICAN_eval2019/'
-for imName in os.listdir(evalImages):
-    im = cv2.imread(evalImages+imName)
-    outputs = predictor(im)
-    # print(outputs)
-    v = Visualizer(im[:, :, ::-1],
-                    metadata=None, 
-                    scale=30, 
-                    instance_mode=ColorMode.IMAGE_BW   # remove the colors of unsegmented pixels. This option is only available for segmentation models
-    )
-    v = v.draw_instance_predictions(outputs["instances"].to("cpu"))
-    out_file_name = 'out_images/'+imName
-    cv2.imwrite(out_file_name, cv2.resize(v.get_image()[:, :, ::-1], (960, 540)))
+# os.makedirs('out_images/', exist_ok=True)
+# evalImages = 'dataverse_files/Images/EVICAN_eval2019/'
+# for imName in os.listdir(evalImages):
+#     im = cv2.imread(evalImages+imName)
+#     outputs = predictor(im)
+#     # print(outputs)
+#     v = Visualizer(im[:, :, ::-1],
+#                     metadata=None, 
+#                     scale=30, 
+#                     instance_mode=ColorMode.IMAGE_BW   # remove the colors of unsegmented pixels. This option is only available for segmentation models
+#     )
+#     v = v.draw_instance_predictions(outputs["instances"].to("cpu"))
+#     out_file_name = 'out_images/'+imName
+#     cv2.imwrite(out_file_name, cv2.resize(v.get_image()[:, :, ::-1], (960, 540)))
 
 
 
 
 evaluator = COCOEvaluator("my_dataset_eval", cfg, False, output_dir="output/")
 val_loader = build_detection_test_loader(cfg, "my_dataset_eval")
-inference_on_dataset(predictor.model, val_loader, evaluator)
+print(inference_on_dataset(predictor.model, val_loader, evaluator))
 
 
 
