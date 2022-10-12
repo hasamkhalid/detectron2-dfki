@@ -59,6 +59,8 @@ Colab/Main_Detectron2.ipynb
 
 git clone https://github.com/facebookresearch/detectron2.git
 
+**pretrained model:** https://bit.ly/3g0zmYC
+
 **To Build Docker:**
 
 **Build Docker Image:** docker compose build
